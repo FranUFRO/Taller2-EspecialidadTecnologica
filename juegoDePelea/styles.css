@@ -1,3 +1,4 @@
+/* Estilos para el área de juego */
 #areaJuego {
     width: 800px; /* Ancho del área de juego */
     height: 400px; /* Alto del área de juego */
@@ -5,9 +6,26 @@
     position: relative;
 }
 
+/* Estilos para los personajes */
 .character {
     width: 50px; /* Ancho del personaje */
     height: 50px; /* Alto del personaje */
     background-color: red; /* Color del personaje */
     position: absolute;
+}
+
+/* Estilos para las barras de vida */
+.health-bar {
+    position: absolute;
+    height: 10px; /* Altura de la barra de vida */
+    background-color: green; /* Color de la barra de vida */
+    border: 1px solid black; /* Borde de la barra de vida */
+    bottom: 0; /* Posición en la parte inferior */
+}
+
+/* Estilos para el estado de los personajes */
+.status {
+    position: absolute;
+    bottom: 15px; /* Separación desde la parte inferior */
+    font-size: 12px; /* Tamaño de la fuente */
 }
