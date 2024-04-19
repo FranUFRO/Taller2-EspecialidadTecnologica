@@ -1,0 +1,13 @@
+#areaJuego {
+    width: 800px; /* Ancho del área de juego */
+    height: 400px; /* Alto del área de juego */
+    background-color: lightgray;
+    position: relative;
+}
+
+.character {
+    width: 50px; /* Ancho del personaje */
+    height: 50px; /* Alto del personaje */
+    background-color: red; /* Color del personaje */
+    position: absolute;
+}

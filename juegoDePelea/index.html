@@ -1,11 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Juego de Pelea en 2D</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div id="areaJuego">
+            <div id="character1" class="character"></div>
+            <div id="character2" class="character"></div>
+        </div>
+        
+
+        <div id="controles">
+            <button id="atacar1">Atacar</button>
+            <button id="defender1">Defender</button>
+            <button id="atacar2">Atacar</button>
+            <button id="defender2">Defender</button>
+        </div>
+        <div class="health-bar">
+            <div id="hero-health" class="health-bar-inner"></div>
+        </div>
+
+        <div class="health-bar">
+            <div id="enemy-health" class="health-bar-inner"></div>
+        </div>
+
+        <script src="javaScript/taller2Pelea.js"></script>
+    </body>
 </html>
