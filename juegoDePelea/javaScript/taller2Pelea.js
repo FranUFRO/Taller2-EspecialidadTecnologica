@@ -25,6 +25,8 @@ document.addEventListener('keydown', function(event){
         if(key === 'm'){
             character2.vida = character2.vida - character1.daño;
             console.log(character2.vida); 
+            updateHealthBar('healthBar2', character2.vida, 10);
+            updateStatus('status2', 'Vida: ' + character2.vida);
             
         }
 
@@ -36,10 +38,11 @@ document.addEventListener('keydown', function(event){
     const key = event.key;
     if(character1.posX == character2.posX && character1.posY == character2.posY){
         if(key === 'v'){
-            character2.vida = character2.vida - character1.daño;
+            character1.vida = character1.vida - character2.daño;
             console.log(character2.vida); 
-            updateHealthBar('healthBar2', character2.vida, 100);
-            updateStatus('status2', 'Vida: ' + character2.vida);
+            updateHealthBar('healthBar1', character1.vida, 10);
+
+            updateStatus('status1', 'Vida: ' + character1.vida);
             
         }
 
