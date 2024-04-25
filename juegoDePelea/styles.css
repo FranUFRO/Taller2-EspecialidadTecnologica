@@ -1,31 +1,59 @@
-/* Estilos para el área de juego */
+
 #areaJuego {
-    width: 800px; /* Ancho del área de juego */
-    height: 400px; /* Alto del área de juego */
+    width: 800px; 
+    height: 400px; 
     background-color: lightgray;
     position: relative;
+    margin-bottom: 20px; /* Espacio entre el área de juego y las barras de salud */
 }
 
-/* Estilos para los personajes */
+
+#character1 {
+    width: 50px; 
+    height: 50px;
+    background-color: red; 
+  
+    position: absolute;
+}
+
+#character2 {
+    width: 50px; 
+    height: 50px;
+    background-color: rgb(21, 255, 56); 
+  
+    position: absolute;
+}
+
 .character {
-    width: 50px; /* Ancho del personaje */
-    height: 50px; /* Alto del personaje */
-    background-color: red; /* Color del personaje */
     position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: red; /* Solo para visualización */
 }
 
-/* Estilos para las barras de vida */
+.row{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px; /* Espacio entre las barras de salud */
+    width: 60%;
+
+}
+
 .health-bar {
-    position: absolute;
-    height: 10px; /* Altura de la barra de vida */
-    background-color: green; /* Color de la barra de vida */
-    border: 1px solid black; /* Borde de la barra de vida */
-    bottom: 0; /* Posición en la parte inferior */
+    width: 50%; /* Ancho de las barras de salud */
+    height: 30px; /* Altura de las barras de salud */
+    background-color: lightgreen; /* Color de fondo de las barras de salud */
 }
 
-/* Estilos para el estado de los personajes */
+.status {
+    font-size: 14px;
+    margin-top: 5px; /* Espacio entre la barra de salud y el texto de estado */
+}
+
+
+
 .status {
     position: absolute;
-    bottom: 15px; /* Separación desde la parte inferior */
-    font-size: 12px; /* Tamaño de la fuente */
+    bottom: 15px; 
+    font-size: 12px; 
 }

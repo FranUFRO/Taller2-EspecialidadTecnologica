@@ -1,15 +1,15 @@
-// Definir la clase Character
+
 class Character {
     constructor(nombre, vida, daño) {
         this.nombre = nombre;
         this.vida = vida;
         this.daño = daño;
-        this.elemento = null; // Almacena el elemento HTML asociado al personaje
-        this.posX = 0; // Posición X del personaje
-        this.posY = 0; // Posición Y del personaje
+        this.elemento = null; 
+        this.posX =  Math.floor(Math.random() * 500); 
+        this.posY = Math.floor(Math.random() * 301); 
     }
 
-    // Método para actualizar la posición del personaje en el DOM
+    
     actualizarPosicion() {
         this.elemento.style.left = this.posX + 'px';
         this.elemento.style.top = this.posY + 'px';
@@ -18,36 +18,48 @@ class Character {
     
 }
 
-document.addEventListener('keydown', function(event){
-    console.log(event.key);
-    const key = event.key;
-    if(character1.posX == character2.posX && character1.posY == character2.posY){
-        if(key === 'm'){
-            character2.vida = character2.vida - character1.daño;
-            console.log(character2.vida); 
-            updateHealthBar('healthBar2', character2.vida, 10);
-            updateStatus('status2', 'Vida: ' + character2.vida);
-            
-        }
+function calcularDistancia(x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+}
 
-    }
-
+document.addEventListener('DOMContentLoaded', function() {
+    character1.elemento.style.left = character1.posX + 'px';
+    character1.elemento.style.top = character1.posY + 'px';
+    character2.elemento.style.left = character2.posX + 'px';
+    character2.elemento.style.top = character2.posY + 'px';
+    updateStatus('status1', 'Vida: ' + character1.vida);
+    updateStatus('status2', 'Vida: ' + character2.vida);
+    updateHealthBar('healthBar1', character1.vida, 100);
+    updateHealthBar('healthBar2', character2.vida, 100);
+    
 });
+
 document.addEventListener('keydown', function(event){
     console.log(event.key);
     const key = event.key;
-    if(character1.posX == character2.posX && character1.posY == character2.posY){
-        if(key === 'v'){
-            character1.vida = character1.vida - character2.daño;
-            console.log(character2.vida); 
-            updateHealthBar('healthBar1', character1.vida, 10);
+    const distancia = calcularDistancia(character1.posX, character1.posY, character2.posX, character2.posY);
+    const rangoDeAtaque = 90; 
 
-            updateStatus('status1', 'Vida: ' + character1.vida);
-            
-        }
-
+    if (key === 'm' && distancia <= rangoDeAtaque) {
+        character2.vida -= character1.daño;
+        console.log(character2.vida); 
+        updateHealthBar('healthBar2', character2.vida, 100);
+        updateStatus('status2', 'Vida: ' + character2.vida);
     }
+});
 
+document.addEventListener('keydown', function(event){
+    console.log(event.key);
+    const key = event.key;
+    const distancia = calcularDistancia(character1.posX, character1.posY, character2.posX, character2.posY);
+    const rangoDeAtaque = 90; 
+
+    if (key === 'v' && distancia <= rangoDeAtaque) {
+        character1.vida -= character2.daño;
+        console.log(character1.vida); 
+        updateHealthBar('healthBar1', character1.vida, 100);
+        updateStatus('status1', 'Vida: ' + character1.vida);
+    }
 });
 
 function updateStatus(elementId, status) {
@@ -65,43 +77,38 @@ function updateStatus(elementId, status) {
     }
   }
 
-// Crear instancias de los personajes
+
 const character1 = new Character('Character 1', 100, 10);
 const character2 = new Character('Character 2', 100, 10);
 
-// Asociar elementos HTML a los personajes
 character1.elemento = document.getElementById('character1');
 character2.elemento = document.getElementById('character2');
 
-// Función para mover un personaje
-// Función para mover un personaje dentro de los límites del área de juego
 function moverPersonaje(personaje, deltaX, deltaY) {
-    // Calcular la nueva posición
+    
     const nuevaPosX = personaje.posX + deltaX;
     const nuevaPosY = personaje.posY + deltaY;
     
-    // Verificar límites del área de juego
     if (nuevaPosX >= 0 && nuevaPosX + personaje.elemento.offsetWidth <= areaJuego.offsetWidth &&
         nuevaPosY >= 0 && nuevaPosY + personaje.elemento.offsetHeight <= areaJuego.offsetHeight) {
-        // Si la nueva posición está dentro de los límites, actualizar la posición del personaje
+      
         personaje.posX = nuevaPosX;
         personaje.posY = nuevaPosY;
         personaje.actualizarPosicion();
     }
 }
 
-// Event listener para el movimiento de los personajes
 document.addEventListener('keydown', function(event) {
     console.log(event.key);
     const key = event.key;
     if (key === 'ArrowUp') {
-        moverPersonaje(character1, 0, -20);
+        moverPersonaje(character1, 0, -10);
     } else if (key === 'ArrowDown') {
-        moverPersonaje(character1, 0, 20);
+        moverPersonaje(character1, 0, 10);
     } else if (key === 'ArrowLeft') {
-        moverPersonaje(character1, -20, 0);
+        moverPersonaje(character1, -10, 0);
     } else if (key === 'ArrowRight') {
-        moverPersonaje(character1, 20, 0);
+        moverPersonaje(character1, 10, 0);
     }
 });
 
