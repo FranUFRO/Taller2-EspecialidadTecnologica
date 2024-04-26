@@ -47,11 +47,9 @@ document.addEventListener("keydown", function (event) {
     character2.vida > 0
   ) {
     character2.vida -= character1.daño;
-    character1.elemento.style.backgroundImage =
-      "url('../../juegoDePelea/images/personaje1Ataca.png')";
+    character1.elemento.style.backgroundImage = "url('../../juegoDePelea/images/personaje1Ataca.png')";
     setTimeout(function () {
-      character1.elemento.style.backgroundImage =
-        "url('../../juegoDePelea/images/personaje1Normal.png')";
+      character1.elemento.style.backgroundImage = "url('../../juegoDePelea/images/personaje1Normal.png')";
     }, 500);
     console.log(character2.vida);
     updateHealthBar("healthBar2", character2.vida, 100);
@@ -78,11 +76,9 @@ document.addEventListener("keydown", function (event) {
     character2.vida > 0
   ) {
     character1.vida -= character2.daño;
-    character2.elemento.style.backgroundImage =
-      "url('../../juegoDePelea/images/personaje2Ataca.png')";
+    character2.elemento.style.backgroundImage ="url('../../juegoDePelea/images/personaje2Ataca.png')";
     setTimeout(function () {
-      character2.elemento.style.backgroundImage =
-        "url('../../juegoDePelea/images/personaje2Normal.png')";
+      character2.elemento.style.backgroundImage = "url('../../juegoDePelea/images/personaje2Normal.png')";
     }, 500);
     console.log(character1.vida);
     updateHealthBar("healthBar1", character1.vida, 100);
@@ -93,19 +89,20 @@ document.addEventListener("keydown", function (event) {
 
 function revisarEstadoJuego() {
   if (character1.vida <= 0 && character2.vida > 0) {
-    finalizarJuego("Jugador 2");
+    character1.elemento.style.backgroundImage = "url('../../juegoDePelea/images/personaje1Muerte.png')";
+    finalizarJuego("Jugador 2",2);
   }
   if (character2.vida <= 0 && character1.vida > 0) {
-    finalizarJuego("Jugador 1");
+    character2.elemento.style.backgroundImage =  "url('../../juegoDePelea/images/personaje2Muerte.png')";
+    finalizarJuego("Jugador 1",1);
   }
 }
 
-function finalizarJuego(nombreGanador) {
+function finalizarJuego(nombreGanador,numJugador) {
     var mensajeCompleto= document.getElementById('mensajeFinalizar');
     const mensaje = document.querySelector('.mensaje'); 
     mensaje.innerText = `¡El jugador ${nombreGanador} ha ganado!`; 
-    mensajeCompleto.style.display = "block"; 
-
+    mensajeCompleto.style=""; 
 }
 
 function reiniciarJuego(){

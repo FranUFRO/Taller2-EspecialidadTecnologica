@@ -8,6 +8,9 @@
     background-color: lightgray;
     position: relative;
     margin-bottom: 20px; /* Espacio entre el área de juego y las barras de salud */
+    position: fixed;
+    top: 25%;
+    left: 25%;
 }
 
 
@@ -39,28 +42,35 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px; /* Espacio entre las barras de salud */
-    width: 60%;
+    width: 100%;
 
 }
 
-.health-bar {
-    width: 50%; /* Ancho de las barras de salud */
+.containerVida1,
+.containerVida2{
+    margin-top: 50px;
+    width: 500px;
+    margin-left: 20px;
+}
+
+.containerVida2 *{
+    text-align: right;
+}
+
+.health-bar { 
+    width: 100%; /* Ancho de las barras de salud */
     height: 30px; /* Altura de las barras de salud */
     background-color: lightgreen; /* Color de fondo de las barras de salud */
+    border: 1px solid black;
 }
 
 .status {
-    font-size: 14px;
-    margin-top: 5px; /* Espacio entre la barra de salud y el texto de estado */
-}
-
-
-
-.status {
+    margin-top: 1px; /* Espacio entre la barra de salud y el texto de estado */
     position: absolute;
     bottom: 15px; 
-    font-size: 12px; 
+    font-size: 15px; 
 }
+
 
 .mensaje {
     position: fixed;
